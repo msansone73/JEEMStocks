@@ -29,16 +29,25 @@ public class StockBean {
 	private List<Long> autoresId = new ArrayList<Long>(); 
 	
 	@Transactional
-	public void salvar() {	
+	public String salvar() {	
 		autoresId.stream().forEach(s -> stock.getSegmentos().add(new Segmento(s)));
 		stockDao.salvar(stock);
 		System.out.println("Stock salva: " + stock);
-		stock= new Stock();
-		autoresId= new ArrayList<Long>();
+		//stock= new Stock();
+		//autoresId= new ArrayList<Long>();
+		
+		
+		/*
+		 * ?faces-redirect=true transforma forward em redirect
+		 * no forward o post é refeito e o dado diplicado
+		 * no redirext o browser faz o redirect
+		 * */
+		return "/stock/lista?faces-redirect=true";
 	}
 	
 	public List<Segmento> getSegmentos(){
-		return segmentoDao.listaTodos();
+		List<Segmento> lista = segmentoDao.listaTodos();
+		return lista;
 	}
 	
 

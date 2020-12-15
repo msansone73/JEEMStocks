@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<h:dataTable var="stock" value="#{adminListaLivrosBean.stocks}">
+	<h:column>
+		<f:facet name="header">Código</f:facet>
+		#{stock.code}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Nome</f:facet>
+		#{stock.name}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Descrição</f:facet>
+		#{stock.description}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Valor</f:facet>
+		#{stock.lastValue}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Segmentos</f:facet>
+		<ui:repeat value="#{stock.segmentos}" var="segmento">
+			#{segmento.name}
+		</ui:repeat>
+	</h:column>
+</h:dataTable>
+
+</html>

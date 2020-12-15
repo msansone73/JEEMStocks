@@ -1,6 +1,7 @@
 package br.com.msansone.mstocks.dao;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +21,15 @@ public class StockDao {
 		}
 		System.out.println("stock to save = "+ stock);
 		em.persist(stock);
+	}
+
+	public List<Stock> listarTudo() {	
+
+		System.out.println("efetuando listagem... ");
+		List<Stock> lista = em.createQuery("select s from Stock s", Stock.class).getResultList();
+
+		return lista;
+	
 	}
 	
 	
