@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:form>
+
+	<div>
+		<h:outputLabel value="Stock" />
+		<h:inputText value="#{stockBean.stock.code}"/>
+	</div>
+	<div>
+		<h:outputLabel value="Name" />
+		<h:inputTextarea cols="20" rows="4" value="#{stockBean.stock.name}"/>
+	</div>
+	<div>
+		<h:outputLabel value="Description" />
+		<h:inputText value="#{stockBean.stock.description}"/>
+	</div>
+	<div>
+		<h:outputLabel value="Current Value" />
+		<h:inputText value="#{stockBean.stock.lastValue}" />
+	</div>
+	<div>
+		<h:outputLabel value="Segmento" />
+		<h:selectManyListbox  value="#{stockBean.autoresId}">
+			<f:selectItems value="#{stockBean.segmentos}"
+			var="segmento" 
+			itemValue="#{segmento.id}"	itemLabel="#{segmento.name}"/>
+		</h:selectManyListbox>
+	</div>	
+
+	<h:commandButton value="Salvar" action="#{stockBean.salvar}" />
+
+</h:form>
+
+
+
+</html>
